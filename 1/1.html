@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>用户注册</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- 配置Tailwind自定义主题 -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#165DFF",
+              secondary: "#36CFC9",
+              neutral: "#F5F7FA",
+              danger: "#F53F3F",
+              success: "#00B42A",
+            },
+            fontFamily: {
+              inter: ["Inter", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- 自定义工具类 -->
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+        .form-input-focus {
+          @apply focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none;
+        }
+        .btn-hover {
+          @apply hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-inter bg-gray-50 min-h-screen flex flex-col">
+    <!-- 页面头部 -->
+    <header class="bg-white shadow-sm">
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center space-x-2">
+          <i class="fa fa-user-circle text-primary text-2xl"></i>
+          <h1 class="text-xl font-bold text-gray-800">账户注册</h1>
+        </div>
+        <div>
+          <a
+            href="#"
+            class="text-gray-600 hover:text-primary transition-colors"
+          >
+            <i class="fa fa-question-circle mr-1"></i>帮助中心
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="flex-grow container mx-auto px-4 py-8 md:py-12">
+      <div class="max-w-md mx-auto">
+        <!-- 注册卡片 -->
+        <div
+          class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all"
+        >
+          <!-- 卡片头部 -->
+          <div class="bg-primary text-white p-6">
+            <h2 class="text-xl font-bold">创建新账户</h2>
+            <p class="text-primary-100 mt-1">请填写以下信息完成注册</p>
+          </div>
+
+          <!-- 表单区域 -->
+          <div class="p-6">
+            <form id="registerForm" class="space-y-5">
+              <!-- 用户名 -->
+              <div class="space-y-2">
+                <label
+                  for="username"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  用户名 <span class="text-danger">*</span>
+                </label>
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  >
+                    <i class="fa fa-user text-gray-400"></i>
+                  </div>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    class="pl-10 block w-full rounded-lg border-gray-300 shadow-sm py-3 border form-input-focus"
+                    placeholder="请输入用户名"
+                    required
+                    minlength="4"
+                    maxlength="20"
+                  />
+                  <div
+                    class="hidden validation-icon absolute inset-y-0 right-0 pr-3 flex items-center"
+                  >
+                    <i class="fa fa-check-circle text-success"></i>
+                  </div>
+                </div>
+                <p class="hidden validation-message text-xs text-danger"></p>
+                <p class="text-xs text-gray-500">
+                  4-20个字符，可包含字母、数字和下划线
+                </p>
+              </div>
+
+              <!-- 电子邮箱 -->
+              <div class="space-y-2">
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  电子邮箱 <span class="text-danger">*</span>
+                </label>
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  >
+                    <i class="fa fa-envelope text-gray-400"></i>
+                  </div>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="pl-10 block w-full rounded-lg border-gray-300 shadow-sm py-3 border form-input-focus"
+                    placeholder="请输入电子邮箱"
+                    required
+                  />
+                  <div
+                    class="hidden validation-icon absolute inset-y-0 right-0 pr-3 flex items-center"
+                  >
+                    <i class="fa fa-check-circle text-success"></i>
+                  </div>
+                </div>
+                <p class="hidden validation-message text-xs text-danger"></p>
+              </div>
+
+              <!-- 手机号码 -->
+              <div class="space-y-2">
+                <label
+                  for="phone"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  手机号码 <span class="text-danger">*</span>
+                </label>
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  >
+                    <i class="fa fa-phone text-gray-400"></i>
+                  </div>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="pl-10 block w-full rounded-lg border-gray-300 shadow-sm py-3 border form-input-focus"
+                    placeholder="请输入手机号码"
+                    required
+                    pattern="^1[3-9]\d{9}$"
+                  />
+                  <div
+                    class="hidden validation-icon absolute inset-y-0 right-0 pr-3 flex items-center"
+                  >
+                    <i class="fa fa-check-circle text-success"></i>
+                  </div>
+                </div>
+                <p class="hidden validation-message text-xs text-danger"></p>
+              </div>
+
+              <!-- 密码 -->
+              <div class="space-y-2">
+                <label
+                  for="password"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  密码 <span class="text-danger">*</span>
+                </label>
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  >
+                    <i class="fa fa-lock text-gray-400"></i>
+                  </div>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="pl-10 block w-full rounded-lg border-gray-300 shadow-sm py-3 border form-input-focus"
+                    placeholder="请设置密码"
+                    required
+                    minlength="8"
+                  />
+                  <button
+                    type="button"
+                    class="toggle-password absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                  >
+                    <i class="fa fa-eye-slash"></i>
+                  </button>
+                </div>
+                <p class="hidden validation-message text-xs text-danger"></p>
+                <p class="text-xs text-gray-500">
+                  至少8个字符，建议包含字母、数字和特殊符号
+                </p>
+              </div>
+
+              <!-- 确认密码 -->
+              <div class="space-y-2">
+                <label
+                  for="confirmPassword"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  确认密码 <span class="text-danger">*</span>
+                </label>
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  >
+                    <i class="fa fa-lock text-gray-400"></i>
+                  </div>
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    class="pl-10 block w-full rounded-lg border-gray-300 shadow-sm py-3 border form-input-focus"
+                    placeholder="请再次输入密码"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="toggle-password absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                  >
+                    <i class="fa fa-eye-slash"></i>
+                  </button>
+                </div>
+                <p class="hidden validation-message text-xs text-danger"></p>
+              </div>
+
+              <!-- 同意条款 -->
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input
+                    id="terms"
+                    name="terms"
+                    type="checkbox"
+                    class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
+                    required
+                  />
+                </div>
+                <div class="ml-3 text-sm">
+                  <label for="terms" class="text-gray-600"
+                    >我已阅读并同意<a
+                      href="#"
+                      class="text-primary hover:underline"
+                      >《用户协议》</a
+                    >和<a href="#" class="text-primary hover:underline"
+                      >《隐私政策》</a
+                    ></label
+                  >
+                </div>
+              </div>
+
+              <!-- 注册按钮 -->
+              <button
+                type="submit"
+                class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium btn-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              >
+                注册账户
+              </button>
+
+              <!-- 已有账户 -->
+              <p class="text-center text-gray-600 text-sm">
+                已有账户？<a
+                  href="#"
+                  class="text-primary hover:underline font-medium"
+                  >立即登录</a
+                >
+              </p>
+            </form>
+          </div>
+        </div>
+
+        <!-- 信息提示区 -->
+        <div class="mt-6 text-center text-sm text-gray-500">
+          <p>注册即表示您同意我们的服务条款和隐私政策</p>
+          <p class="mt-1">© 2023 账户注册系统 版权所有</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-white border-t mt-12">
+      <div class="container mx-auto px-4 py-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="text-gray-500 text-sm mb-4 md:mb-0">
+            <p>客服热线：400-123-4567</p>
+          </div>
+          <div class="flex space-x-4">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-primary transition-colors"
+            >
+              <i class="fa fa-weibo text-lg"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-primary transition-colors"
+            >
+              <i class="fa fa-wechat text-lg"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-primary transition-colors"
+            >
+              <i class="fa fa-qq text-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 成功提交模态框 -->
+    <div
+      id="successModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+    >
+      <div
+        class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 transform transition-all"
+      >
+        <div class="p-6 text-center">
+          <div
+            class="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <i class="fa fa-check text-2xl text-success"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">注册成功！</h3>
+          <p class="text-gray-600 mb-6" id="successMessage">
+            您的账户已创建，正在跳转至登录页面...
+          </p>
+          <button
+            id="closeModal"
+            class="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary btn-hover"
+          >
+            确定
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 等待DOM加载完成
+      document.addEventListener("DOMContentLoaded", function () {
+        const registerForm = document.getElementById("registerForm");
+        const successModal = document.getElementById("successModal");
+        const closeModal = document.getElementById("closeModal");
+        const successMessage = document.getElementById("successMessage");
+
+        // 密码显示/隐藏切换
+        document.querySelectorAll(".toggle-password").forEach((button) => {
+          button.addEventListener("click", function () {
+            const input = this.parentElement.querySelector("input");
+            const icon = this.querySelector("i");
+
+            if (input.type === "password") {
+              input.type = "text";
+              icon.classList.remove("fa-eye-slash");
+              icon.classList.add("fa-eye");
+            } else {
+              input.type = "password";
+              icon.classList.remove("fa-eye");
+              icon.classList.add("fa-eye-slash");
+            }
+          });
+        });
+
+        // 实时表单验证
+        const formFields = [
+          {
+            id: "username",
+            validator: function (value) {
+              if (value.length < 4) return "用户名长度不能少于4个字符";
+              if (value.length > 20) return "用户名长度不能超过20个字符";
+              if (!/^[a-zA-Z0-9_]+$/.test(value))
+                return "用户名只能包含字母、数字和下划线";
+              return null;
+            },
+          },
+          {
+            id: "email",
+            validator: function (value) {
+              const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              if (!emailRegex.test(value)) return "请输入有效的电子邮箱地址";
+              return null;
+            },
+          },
+          {
+            id: "phone",
+            validator: function (value) {
+              if (!/^1[3-9]\d{9}$/.test(value)) return "请输入有效的手机号码";
+              return null;
+            },
+          },
+          {
+            id: "password",
+            validator: function (value) {
+              if (value.length < 8) return "密码长度不能少于8个字符";
+              if (!/[A-Z]/.test(value) && !/[a-z]/.test(value))
+                return "密码至少包含一个字母";
+              if (!/\d/.test(value)) return "密码至少包含一个数字";
+              return null;
+            },
+          },
+          {
+            id: "confirmPassword",
+            validator: function (value) {
+              const password = document.getElementById("password").value;
+              if (value !== password) return "两次输入的密码不一致";
+              return null;
+            },
+          },
+        ];
+
+        // 为每个字段添加输入事件监听
+        formFields.forEach((field) => {
+          const input = document.getElementById(field.id);
+          if (input) {
+            input.addEventListener("input", function () {
+              validateField(field.id, field.validator);
+            });
+
+            input.addEventListener("blur", function () {
+              validateField(field.id, field.validator, true);
+            });
+          }
+        });
+
+        // 字段验证函数
+        function validateField(fieldId, validator, showError = false) {
+          const input = document.getElementById(fieldId);
+          const value = input.value.trim();
+          const errorElement = input.parentElement.nextElementSibling;
+          const iconElement =
+            input.parentElement.querySelector(".validation-icon");
+
+          const errorMessage = validator(value);
+
+          if (errorMessage && (showError || value.length > 0)) {
+            input.classList.add("border-danger");
+            input.classList.remove("border-success");
+
+            if (errorElement) {
+              errorElement.textContent = errorMessage;
+              errorElement.classList.remove("hidden");
+            }
+
+            if (iconElement) {
+              iconElement.classList.add("hidden");
+            }
+            return false;
+          } else {
+            input.classList.remove("border-danger");
+            if (value.length > 0) {
+              input.classList.add("border-success");
+              if (iconElement) {
+                iconElement.classList.remove("hidden");
+              }
+            } else {
+              input.classList.remove("border-success");
+              if (iconElement) {
+                iconElement.classList.add("hidden");
+              }
+            }
+
+            if (errorElement) {
+              errorElement.classList.add("hidden");
+            }
+            return true;
+          }
+        }
+
+        // 表单提交处理
+        registerForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // 验证所有字段
+          let isValid = true;
+          formFields.forEach((field) => {
+            const fieldIsValid = validateField(field.id, field.validator, true);
+            isValid = isValid && fieldIsValid;
+          });
+
+          // 检查同意条款
+          const termsCheckbox = document.getElementById("terms");
+          if (!termsCheckbox.checked) {
+            isValid = false;
+            // 这里可以添加条款未同意的提示
+            alert("请阅读并同意用户协议和隐私政策");
+          }
+
+          if (isValid) {
+            // 收集表单数据
+            const formData = {
+              username: document.getElementById("username").value.trim(),
+              email: document.getElementById("email").value.trim(),
+              phone: document.getElementById("phone").value.trim(),
+              password: document.getElementById("password").value,
+            };
+
+            // 模拟数据提交
+            simulateSubmit(formData);
+          }
+        });
+
+        // 模拟数据提交
+        function simulateSubmit(data) {
+          // 显示加载状态
+          const submitButton = registerForm.querySelector(
+            'button[type="submit"]'
+          );
+          const originalText = submitButton.innerHTML;
+          submitButton.disabled = true;
+          submitButton.innerHTML =
+            '<i class="fa fa-spinner fa-spin mr-2"></i>提交中...';
+
+          // 模拟API请求延迟
+          setTimeout(() => {
+            // 恢复按钮状态
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalText;
+
+            // 显示成功消息
+            successMessage.textContent = `恭喜 ${data.username}，您的账户已成功创建！`;
+            successModal.classList.remove("hidden");
+
+            // 重置表单
+            registerForm.reset();
+            document.querySelectorAll("input").forEach((input) => {
+              input.classList.remove("border-success", "border-danger");
+            });
+            document.querySelectorAll(".validation-icon").forEach((icon) => {
+              icon.classList.add("hidden");
+            });
+            document.querySelectorAll(".validation-message").forEach((msg) => {
+              msg.classList.add("hidden");
+            });
+          }, 1500);
+        }
+
+        // 关闭模态框
+        closeModal.addEventListener("click", function () {
+          successModal.classList.add("hidden");
+        });
+
+        // 点击模态框外部关闭
+        successModal.addEventListener("click", function (e) {
+          if (e.target === successModal) {
+            successModal.classList.add("hidden");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
