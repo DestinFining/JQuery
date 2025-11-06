@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>课工场论坛发贴</title>
+    <link rel="stylesheet" href="task.css" />
+  </head>
+  <body>
+    <div class="bbs">
+      <header><span class="span-1">我要发帖</span></header>
+      <section><ul id="postList"></ul></section>
+      <div class="post" id="post">
+        <input
+          class="title"
+          placeholder="请输入标题（1-50个字符）"
+          id="title"
+        />
+        所属版块：<select id="sec">
+          <option>请选择版块</option>
+          <option>电子书籍</option>
+          <option>新课来了</option>
+          <option>新手报到</option>
+          <option>职业规划</option>
+        </select>
+        <textarea class="content" id="content"></textarea>
+        <input class="btn" value="发布" />
+      </div>
+    </div>
+    <script src="task.js"></script>
+  </body>
+</html>

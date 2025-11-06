@@ -1,0 +1,21 @@
+var width = 10;
+var data = new Date();
+var name = "rose";
+document.write("name:" + name + "<br>");
+document.write("data:" + data + "<br>");
+document.write("width:" + width + "<br>");
+var height;
+document.write("height:" + height + "<br>");
+document.write("null:" + null + "<br>");
+
+var arr1 = new Array(10);
+document.write("arr1.length=" + arr1.length + "<br>");
+var arr2 = new Array();
+arr2 = ["apple", "orange", "peach", "banana"];
+document.write("arr2=" + arr2 + "<br>");
+var str = "apple,orange,peach,banana";
+var arrStr = str.split(",");
+var outStr = arrStr.join("-");
+document.write("arrStr=" + outStr + "<br>");
+document.write(arrStr.sort() + "<br>");
+document.write(arrStr.push("banana") + "<br>");

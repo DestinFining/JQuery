@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var Array = ["Apple", "Banana", "Orange", "Grape", "Pear"];
+      var sum = 0;
+      document.writeln("在以下字符串中:<br>");
+      for (i in Array) {
+        document.write(Array[i] + "<br>");
+        if (Array[i].indexOf("a") != 0) {
+          sum += 1;
+        } else if (Array[i].indexOf("A") != 0) {
+          sum += 1;
+        }
+      }
+      document.writeln("有" + sum + "个含有a或者A的单词。");
+    </script>
+  </head>
+  <body></body>
+</html>
