@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title>完善当当购物车页面</title>
+    <link type="text/css" rel="stylesheet" href="css/cartStyle.css" />
+    <script>
+      //关闭当前页面
+      function close_plan() {
+        window.close();
+      }
+      //移入收藏
+      function collection() {
+        if (confirm("移入收藏后，将不在购物车显示，是否继续操作？")) {
+          alert("移入收藏成功！");
+        }
+      }
+      //删除商品
+      function del() {
+        if (confirm("确定要删除该商品吗？")) {
+          alert("删除成功！");
+        }
+      }
+      //结算
+      function accounts() {
+        if (
+          confirm(
+            "您本次购买的商品信息如下：\n商品名称：雷柏(Rapoo)V500PRO、雷蛇(Razer）蜂蛇2000；\n商品数量：2件；\n商品总计：318.00；\n运费：0元；\n\n请确认以上信息是否有误！！！"
+          )
+        ) {
+          alert("您的订单已提交");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="logo">
+        <img src="images/logo.jpg" /><span onclick="close_plan();">关闭</span>
+      </div>
+      <div class="cartList">
+        <ul>
+          <li>
+            <p onclick="collection();">移入收藏</p>
+            <p onclick="del();">删除</p>
+          </li>
+          <li id="price0">¥159.00</li>
+          <li>
+            <input
+              type="button"
+              name="minus"
+              value="-"
+              onclick="minus(0);"
+            /><input type="text" name="amount" value="1" /><input
+              type="button"
+              name="plus"
+              value="+"
+              onclick="plus(0);"
+            />
+          </li>
+          <li>¥<input type="text" name="price" value="159.00" /></li>
+        </ul>
+        <ul>
+          <li>
+            <p onclick="collection();">移入收藏</p>
+            <p onclick="del();">删除</p>
+          </li>
+          <li id="price1">¥159.00</li>
+          <li>
+            <input
+              type="button"
+              name="minus"
+              value="-"
+              onclick="minus(1);"
+            /><input type="text" name="amount" value="1" /><input
+              type="button"
+              name="plus"
+              value="+"
+              onclick="plus(1);"
+            />
+          </li>
+          <li>¥<input type="text" name="price" value="159.00" /></li>
+        </ul>
+        <ol>
+          <li id="totalPrice">¥318</li>
+          <li><span onclick="accounts();">结 算</span></li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>用户注册</title>
+  </head>
+  <body
+    style="
+      background-image: url('./reg_bg_min.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+    "
+  >
+    <form action="#" method="post">
+      <fieldset
+        style="
+          backdrop-filter: blur(5px);
+          background-color: rgba(255, 255, 255, 0.5);
+          border-radius: 10px;
+          padding: 20px;
+        "
+      >
+        <legend>用户注册</legend>
+
+        <table cellpadding="10" cellspacing="0" width="500" align="center">
+          <tr></tr>
+          <tr>
+            <td width="30%" align="right">用户名：</td>
+            <td>
+              <input type="text" name="username" size="20" maxlength="20" />
+            </td>
+          </tr>
+          <tr>
+            <td align="right">密码：</td>
+            <td>
+              <input type="password" name="password" size="20" maxlength="20" />
+            </td>
+          </tr>
+          <tr>
+            <td align="right">性别：</td>
+            <td>
+              <input type="radio" name="gender" value="male" checked />男
+              <input type="radio" name="gender" value="female" />女
+            </td>
+          </tr>
+          <tr>
+            <td align="right">兴趣爱好：</td>
+            <td>
+              <input type="checkbox" name="hobby" value="reading" />阅读
+              <input type="checkbox" name="hobby" value="music" />音乐
+              <input type="checkbox" name="hobby" value="sports" />运动
+              <input type="checkbox" name="hobby" value="travel" />旅游
+            </td>
+          </tr>
+          <tr>
+            <td align="right">出生日期：</td>
+            <td>
+              <select name="year">
+                <option value="1990">2003</option>
+                <option value="1991">2004</option>
+                <!-- 更多年份选项 --></select
+              >年
+              <select name="month">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option></select
+              >月
+              <select name="day">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option></select
+              >日
+            </td>
+          </tr>
+          <tr>
+            <td align="right">个人简介：</td>
+            <td><textarea name="bio" rows="4" cols="40"></textarea></td>
+          </tr>
+          <tr>
+            <td align="right">
+              <input type="checkbox" />
+            </td>
+            <td>阅读并接受 <a href="#">《用户协议》</a></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center">
+              <input type="submit" value="注册" />
+              <input type="reset" value="重置" />
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+    </form>
+  </body>
+</html>
