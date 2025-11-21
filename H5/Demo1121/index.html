@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #logoArea img{
+            width:300px;
+            height:40px;
+            margin-top:20px;
+            margin-left:20px;
+        }
+        #logoArea input{
+            margin-top: 25px;
+            margin-right:80px;
+            float: right;
+            width:400px;
+            height:30px;
+            margin-left:20px;
+            font-size:16px;
+            box-shadow: 0 0 5px black;
+            border-radius: 5px;
+        }
+        #header #logoArea{
+            width:100%;
+            height:80px;
+            background-color: #f2f2f2;
+        }
+        #header ul li{
+            list-style-type: none;
+            float: left;
+            font-size: 16px;
+            width:80px;
+            text-align: center;
+            
+        }
+        #header ul{
+            width:100%;
+            height:40px;
+            background-color: #19db8d;
+            line-height: 40px;
+        }
+        #header ul li a{
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            display: block;
+        }
+        #header ul li a:hover{
+            background: url("images/navarrow.png") no-repeat center bottom;
+            color: rgb(0, 0, 0);
+        }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="header">
+        <div id="logoArea"><img src="images/logo.png" /><input type="text"  placeholder="搜索……"/></div>
+        <ul>
+            <li><a href="#"> 首页 </a></li>
+            <li><a href="#">菜鸟笔记 </a></li>
+            <li><a href="#">菜鸟工具</a></li>
+            <li><a href="#">参考手册</a></li>
+            <li><a href="#">用户笔记</a></li>
+            <li><a href="#">测验/考试</a></li>
+            <li><a href="#">本地书签</a></li>
+        </ul>
+    </div>
+  </body>
+</html>
