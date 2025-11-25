@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../jquery-3.7.1.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("[type=password]")
+          .keyup(function () {
+            $("#events").append("keyup");
+          })
+          .keydown(function () {
+            $("#events").append("keydown");
+          })
+          .keypress(function () {
+            $("#events").append("keypress");
+          });
+      });
+      $(document).keydown(function (event) {
+        if (event.keyCode == 13) {
+          confirm("确认要提交吗？");
+        }
+      });
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      fieldset {
+        width: 300px;
+        margin: 100px auto;
+        padding: 20px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+      }
+      dl {
+        margin-bottom: 10px;
+      }
+      dt {
+        width: 70px;
+        text-align: right;
+        margin-right: 10px;
+        display: inline-block;
+      }
+      dd {
+        margin: 0;
+        display: inline-block;
+      }
+      #events {
+        display: block;
+        margin-top: 10px;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <legend>会员登陆</legend>
+      <dl>
+        <dt>用户名：</dt>
+        <dd><input type="text" id="userName" /></dd>
+      </dl>
+      <dl>
+        <dt>密码：</dt>
+        <dd><input type="password" id="password" /></dd>
+      </dl>
+      <dl>
+        <dt></dt>
+        <dd><input type="submit" value="登录" /></dd>
+      </dl>
+      <span id="events"></span>
+    </fieldset>
+  </body>
+</html>
